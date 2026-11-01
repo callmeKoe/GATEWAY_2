@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Home | GATEWAY TRAVEL</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family: "Segoe UI", Arial, sans-serif;
+                color: #333333;
+                background: #faf6ee;
+                line-height: 1.6;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            img {
+                max-width: 100%;
+                display: block;
+            }
+
+            .container {
+                width: 90%;
+                max-width: 1100px;
+                margin: auto;
+            }
+
+            header {
+                background-color: #1f2a37;
+                background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("Photo/travel.jpg");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                color: #ffffff;
+                position: sticky;
+                top: 0;
+                z-index: 50;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            }
+
+            .header-inner {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                padding: 10px 0;
+            }
+
+            .logo {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #ffffff;
+            }
+
+            .logo img {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+
+            nav a {
+                display: block;
+                padding: 8px 12px;
+                border-radius: 6px;
+                font-size: 0.92rem;
+                font-weight: 600;
+            }
+
+            nav a:hover,
+            nav a.active {
+                background: #d99a1e;
+                color: #1f2a37;
+            }
+
+            .logout-btn {
+                border: 1px solid #d99a1e;
+                border-radius: 8px;
+                padding: 6px 14px;
+                color: #ffffff !important;
+                transition: all 0.3s;
+            }
+
+            .logout-btn:hover {
+                background: #d99a1e;
+                color: #1f2a37 !important;
+            }
+
+            .hero {
+                min-height: 480px;
+                display: grid;
+                place-items: center;
+                text-align: center;
+                color: #ffffff;
+                padding: 60px 20px;
+                background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.55)), url("Photo/travel.jpg");
+                background-size: cover;
+                background-position: center;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+                margin-bottom: 10px;
+                color: #d99a1e;
+            }
+
+            .hero p {
+                max-width: 650px;
+                margin: 0 auto 20px;
+                font-size: 1.1rem;
+            }
+
+            .btn {
+                display: inline-block;
+                background: #d99a1e;
+                color: #1f2a37;
+                padding: 11px 24px;
+                border: none;
+                border-radius: 6px;
+                font-weight: 700;
+                cursor: pointer;
+                font-size: 1rem;
+            }
+
+            .btn:hover {
+                background: #f0b13a;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            h2.title {
+                text-align: center;
+                font-size: 1.9rem;
+                margin-bottom: 30px;
+                color: #1f2a37;
+            }
+
+            h2.title::after {
+                content: "";
+                display: block;
+                width: 60px;
+                height: 4px;
+                background: #d99a1e;
+                margin: 8px auto 0;
+                border-radius: 3px;
+            }
+
+            .grid {
+                display: grid;
+                gap: 22px;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .card {
+                background: #ffffff;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+                transition: transform 0.2s;
+            }
+
+            .card:hover {
+                transform: translateY(-5px);
+            }
+
+            .card-body {
+                padding: 18px;
+            }
+
+            .card h3 {
+                margin-bottom: 6px;
+                color: #1f2a37;
+            }
+
+            .thumb {
+                position: relative;
+                height: 170px;
+                display: grid;
+                place-items: center;
+                color: #ffffff;
+                font-size: 3rem;
+                overflow: hidden;
+            }
+
+            .thumb img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: 1;
+            }
+
+            .thumb span {
+                position: relative;
+                z-index: 2;
+                background: rgba(0, 0, 0, 0.45);
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 1.5rem;
+            }
+
+            .t1 {
+                background: linear-gradient(135deg, #d99a1e, #b3322b);
+            }
+            .t2 {
+                background: linear-gradient(135deg, #1f7a5a, #2a9d8f);
+            }
+            .t3 {
+                background: linear-gradient(135deg, #3a5a8c, #1f2a37);
+            }
+            .t4 {
+                background: linear-gradient(135deg, #8c4a8c, #b3322b);
+            }
+
+            .price {
+                color: #b3322b;
+                font-weight: 700;
+                font-size: 1.2rem;
+            }
+
+            footer {
+                background: #1f2a37;
+                color: #cccccc;
+                padding: 40px 0 15px;
+                margin-top: 30px;
+            }
+
+            .footer-grid {
+                display: grid;
+                gap: 25px;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+
+            footer h4 {
+                color: #d99a1e;
+                margin-bottom: 8px;
+            }
+
+            footer a:hover {
+                color: #d99a1e;
+            }
+
+            .copy {
+                text-align: center;
+                border-top: 1px solid #3a4756;
+                margin-top: 25px;
+                padding-top: 12px;
+                font-size: 0.85rem;
+            }
+
+            @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+        }
+        </style>
+        <script>
+            alert("Welcome to Gateway Travel! Explore the beauty of Myanmar with us.");
+        </script>
+    </head>
+    <body>
+        <header>
+            <div class="container header-inner">
+                <a href="home.html" class="logo"> <img src="Photo/logo.jpg" alt="Gateway Travel Logo" /> GATEWAY TRAVEL </a>
+                <nav>
+                    <ul>
+                        <li><a href="home.html" class="active">Home</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="travel-guide.html">Travel Guide</a></li>
+                        <li><a href="packages.html">Tour Packages</a></li>
+                        <li><a href="booking.html">Booking</a></li>
+                        <li><a href="hotels.html">Hotels</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="index.html" class="logout-btn">Log Out</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="hero">
+            <div>
+                <h1>Discover the Golden Land</h1>
+                <p>Experience the timeless beauty, rich culture, and breathtaking landscapes of Myanmar with Gateway Travel.</p>
+                <a href="packages.html" class="btn">Explore Packages</a>
+            </div>
+        </div>
+
+        <section>
+            <div class="container">
+                <h2 class="title">Featured Destinations</h2>
+                <div class="grid">
+                    <div class="card">
+                        <div class="thumb t1">
+                            <img src="Photo/bagan.jpg" alt="Bagan" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Bagan Temples</h3>
+                            <p>Explore thousands of ancient pagodas spread across the mystical plains.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="thumb t2">
+                            <img src="Photo/Lake.jpg" alt="Inle Lake" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Inle Lake</h3>
+                            <p>Witness unique leg-rowing fishermen and vibrant floating gardens.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="thumb t3">
+                            <img src="Photo/Yangon.jpg" alt="Yangon" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Yangon City</h3>
+                            <p>Visit the majestic Shwedagon Pagoda and charming colonial downtown.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="thumb t4">
+                            <img src="Photo/beach.jpg" alt="Ngapali Beach" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Ngapali Beach</h3>
+                            <p>Relax on pristine white sands and crystal-clear turquoise waters.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: #ffffff">
+            <div class="container" style="text-align: center; max-width: 800px">
+                <h2 class="title">Why Travel With Us?</h2>
+                <p style="margin-bottom: 20px">
+                    At Gateway Travel, we take pride in offering authentic, safe, and unforgettable journeys tailored to your preferences. With expert local
+                    guides, transparent pricing, and 24/7 customer support, your dream vacation in Myanmar is in the safest hands.
+                </p>
+                <a href="about.html" class="btn">Learn More About Us</a>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container footer-grid">
+                <div>
+                    <h4>GATEWAY TRAVEL</h4>
+                    <p>Your trusted partner for unforgettable journeys across Myanmar.</p>
+                </div>
+                <div>
+                    <h4>Quick Access</h4>
+                    <p>
+                        <a href="packages.html">Tour Packages</a><br />
+                        <a href="booking.html">Booking</a><br />
+                        <a href="reviews.html">Reviews</a>
+                    </p>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <p>
+                        No. 123, Pyay Road, Yangon<br />
+                        +95 9 123 456 789<br />
+                        info@GATEWAYTRAVEL.com
+                    </p>
+                </div>
+            </div>
+            <p class="copy">&copy; Htet Hlaing Win (Batch6-26). All rights reserved.</p>
+        </footer>
+    </body>
+</html>

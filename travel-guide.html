@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Travel Guide | GATEWAY TRAVEL</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family: "Segoe UI", Arial, sans-serif;
+                color: #333333;
+                background: #faf6ee;
+                line-height: 1.6;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            img {
+                max-width: 100%;
+                display: block;
+            }
+
+            .container {
+                width: 90%;
+                max-width: 1100px;
+                margin: auto;
+            }
+
+            header {
+                background-color: #1f2a37;
+                background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("Photo/travel.jpg");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                color: #ffffff;
+                position: sticky;
+                top: 0;
+                z-index: 50;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            }
+
+            .header-inner {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                padding: 10px 0;
+            }
+
+            .logo {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #ffffff;
+            }
+
+            .logo img {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+
+            nav a {
+                display: block;
+                padding: 8px 12px;
+                border-radius: 6px;
+                font-size: 0.92rem;
+                font-weight: 600;
+            }
+
+            nav a:hover,
+            nav a.active {
+                background: #d99a1e;
+                color: #1f2a37;
+            }
+
+            .logout-btn {
+                border: 1px solid #d99a1e;
+                border-radius: 8px;
+                padding: 6px 14px;
+                color: #ffffff !important;
+                transition: all 0.3s;
+            }
+
+            .logout-btn:hover {
+                background: #d99a1e;
+                color: #1f2a37 !important;
+            }
+
+            .page-banner {
+                padding: 50px 20px;
+                text-align: center;
+                color: #ffffff;
+                background: linear-gradient(135deg, #1f7a5a, #1f2a37);
+            }
+
+            .page-banner h1 {
+                font-size: 2.2rem;
+            }
+
+            .btn {
+                display: inline-block;
+                background: #d99a1e;
+                color: #1f2a37;
+                padding: 11px 24px;
+                border: none;
+                border-radius: 6px;
+                font-weight: 700;
+                cursor: pointer;
+                font-size: 1rem;
+            }
+
+            .btn:hover {
+                background: #f0b13a;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            h2.title {
+                text-align: center;
+                font-size: 1.9rem;
+                margin-bottom: 30px;
+                color: #1f2a37;
+            }
+
+            h2.title::after {
+                content: "";
+                display: block;
+                width: 60px;
+                height: 4px;
+                background: #d99a1e;
+                margin: 8px auto 0;
+                border-radius: 3px;
+            }
+
+            .grid {
+                display: grid;
+                gap: 22px;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .card {
+                background: #ffffff;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+                transition: transform 0.2s;
+            }
+
+            .card:hover {
+                transform: translateY(-5px);
+            }
+
+            .card-body {
+                padding: 18px;
+            }
+
+            .card h3 {
+                margin-bottom: 6px;
+                color: #1f2a37;
+            }
+
+            .thumb {
+                position: relative;
+                height: 170px;
+                display: grid;
+                place-items: center;
+                color: #ffffff;
+                font-size: 3rem;
+                overflow: hidden;
+            }
+
+            .thumb img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: 1;
+            }
+
+            .thumb span {
+                position: relative;
+                z-index: 2;
+                background: rgba(0, 0, 0, 0.45);
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 1.5rem;
+            }
+
+            .t1 {
+                background: linear-gradient(135deg, #d99a1e, #b3322b);
+            }
+            .t2 {
+                background: linear-gradient(135deg, #1f7a5a, #2a9d8f);
+            }
+            .t3 {
+                background: linear-gradient(135deg, #3a5a8c, #1f2a37);
+            }
+            .t4 {
+                background: linear-gradient(135deg, #8c4a8c, #b3322b);
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                background: #ffffff;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            th,
+            td {
+                padding: 12px 14px;
+                text-align: left;
+                border-bottom: 1px solid #eeeeee;
+            }
+
+            th {
+                background: #1f2a37;
+                color: #ffffff;
+            }
+
+            tr:hover td {
+                background: #fdf5e3;
+            }
+
+            footer {
+                background: #1f2a37;
+                color: #cccccc;
+                padding: 40px 0 15px;
+                margin-top: 30px;
+            }
+
+            .footer-grid {
+                display: grid;
+                gap: 25px;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+
+            footer h4 {
+                color: #d99a1e;
+                margin-bottom: 8px;
+            }
+
+            footer a:hover {
+                color: #d99a1e;
+            }
+
+            .copy {
+                text-align: center;
+                border-top: 1px solid #3a4756;
+                margin-top: 25px;
+                padding-top: 12px;
+                font-size: 0.85rem;
+            }
+
+            @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="container header-inner">
+                <a href="home.html" class="logo"> <img src="Photo/logo.jpg" alt="Gateway Travel Logo" /> GATEWAY TRAVEL </a>
+                <nav>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="travel-guide.html" class="active">Travel Guide</a></li>
+                        <li><a href="packages.html">Tour Packages</a></li>
+                        <li><a href="booking.html">Booking</a></li>
+                        <li><a href="hotels.html">Hotels</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="index.html" class="logout-btn">Log Out</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="page-banner">
+            <h1>Myanmar Travel Guide</h1>
+            <p>Destinations, culture, food and tips</p>
+        </div>
+
+        <section>
+            <div class="container">
+                <h2 class="title">Famous Tourist Destinations</h2>
+                <div class="grid">
+                    <div class="card">
+                        <div class="thumb t1">
+                            <img src="Photo/bagan.jpg" alt="Bagan" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Bagan</h3>
+                            <p>Over 2,000 ancient temples on a vast plain. Best seen by electric bike or hot air balloon at sunrise.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="thumb t2">
+                            <img src="Photo/Lake.jpg" alt="Inle Lake" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Inle Lake</h3>
+                            <p>Floating gardens, stilt villages and the Phaung Daw Oo Pagoda.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="thumb t3">
+                            <img src="Photo/Yangon.jpg" alt="Yangon" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Yangon</h3>
+                            <p>Home of the golden Shwedagon Pagoda, Bogyoke Market and colonial downtown.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="thumb t4">
+                            <img src="Photo/Mandalay.jpg" alt="Mandalay" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Mandalay</h3>
+                            <p>Royal palace, Mandalay Hill, Mahamuni Buddha and the U Bein teak bridge.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: #ffffff">
+            <div class="container">
+                <h2 class="title">Culture &amp; Traditions</h2>
+                <p>
+                    Myanmar is a predominantly Buddhist country with 135 recognised ethnic groups. Visitors will see monks collecting alms at dawn, colourful
+                    festivals such as Thingyan (Water Festival) in April, Thadingyut (Festival of Lights) in October and Tazaungdaing in November. Traditional
+                    dress includes the <em>longyi</em>, and thanaka paste is worn on the face as sun protection and decoration.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h2 class="title">Food &amp; Local Dishes</h2>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>🍜 Mohinga</h3>
+                            <p>Fish noodle soup, the national breakfast dish.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>🥗 Lahpet Thoke</h3>
+                            <p>Fermented tea leaf salad with nuts and beans.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>🍛 Shan Noodles</h3>
+                            <p>Rice noodles in a light tomato and chicken broth.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>🍲 Ohn No Khao Swe</h3>
+                            <p>Coconut chicken noodle curry.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: #ffffff">
+            <div class="container">
+                <h2 class="title">Local Travel Tips</h2>
+                <ul style="max-width: 800px; margin: auto; padding-left: 20px">
+                    <li>Dress modestly at temples, cover shoulders and knees, and remove shoes and socks.</li>
+                    <li>Carry some clean US dollar notes and Myanmar kyat; cards are not accepted everywhere.</li>
+                    <li>Always ask permission before photographing monks or local people.</li>
+                    <li>Drink bottled water and use sunscreen and insect repellent.</li>
+                    <li>Check current travel advice and visa requirements before you travel.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h2 class="title">Seasonal Travel Advice</h2>
+                <table>
+                    <tr>
+                        <th>Season</th>
+                        <th>Months</th>
+                        <th>What to expect</th>
+                    </tr>
+                    <tr>
+                        <td>Cool season</td>
+                        <td>Nov to Feb</td>
+                        <td>Best weather, peak tourist season. Book early.</td>
+                    </tr>
+                    <tr>
+                        <td>Hot season</td>
+                        <td>Mar to May</td>
+                        <td>Very hot in central Myanmar; good for beaches and highlands.</td>
+                    </tr>
+                    <tr>
+                        <td>Rainy season</td>
+                        <td>Jun to Oct</td>
+                        <td>Green scenery, fewer crowds, lower prices. Bagan stays relatively dry.</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container footer-grid">
+                <div>
+                    <h4>GATEWAY TRAVEL</h4>
+                    <p>Your trusted partner for unforgettable journey across Myanmar.</p>
+                </div>
+                <div>
+                    <h4>Quick Access</h4>
+                    <p>
+                        <a href="packages.html">Tour Packages</a><br />
+                        <a href="booking.html">Booking</a><br />
+                        <a href="reviews.html">Reviews</a>
+                    </p>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <p>
+                        No. 123, Pyay Road, Yangon<br />
+                        +95 9 123 456 789<br />
+                        info@GATEWAYTRAVEL.com
+                    </p>
+                </div>
+            </div>
+            <p class="copy">&copy; Htet Hlaing Win (Batch6-26). All rights reserved.</p>
+        </footer>
+    </body>
+</html>

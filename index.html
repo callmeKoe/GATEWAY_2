@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Login | GATEWAY TRAVEL</title>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family: "Segoe UI", Arial, sans-serif;
+                color: #333333;
+                background: #faf6ee;
+                line-height: 1.6;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+
+            img {
+                max-width: 100%;
+                display: block;
+            }
+
+            .container {
+                width: 90%;
+                max-width: 1100px;
+                margin: auto;
+            }
+
+            header {
+                background-color: #1f2a37;
+                background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("Photo/nav.jpg");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                color: #ffffff;
+                position: sticky;
+                top: 0;
+                z-index: 50;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            }
+
+            .header-inner {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                padding: 12px 0;
+            }
+
+            .logo {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #d99a1e;
+            }
+
+            .logo img {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+
+            nav a {
+                display: block;
+                padding: 8px 12px;
+                border-radius: 6px;
+                font-size: 0.92rem;
+                font-weight: 600;
+            }
+
+            nav a:hover,
+            nav a.active {
+                background: #d99a1e;
+                color: #1f2a37;
+            }
+
+            .logout-btn {
+                border: 1px solid #d99a1e;
+                border-radius: 8px;
+                padding: 6px 14px;
+                color: #ffffff !important;
+                transition: all 0.3s;
+            }
+
+            .logout-btn:hover {
+                background: #d99a1e;
+                color: #1f2a37 !important;
+            }
+
+            .hero {
+                min-height: 420px;
+                display: grid;
+                place-items: center;
+                text-align: center;
+                color: #ffffff;
+                padding: 60px 20px;
+                background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.55)), linear-gradient(135deg, #d99a1e, #b3322b 55%, #1f7a5a);
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+                margin-bottom: 10px;
+            }
+
+            .hero p {
+                max-width: 650px;
+                margin: 0 auto 20px;
+                font-size: 1.1rem;
+            }
+
+            .page-banner {
+                padding: 50px 20px;
+                text-align: center;
+                color: #ffffff;
+                background: linear-gradient(135deg, #1f7a5a, #1f2a37);
+            }
+
+            .page-banner h1 {
+                font-size: 2.2rem;
+            }
+
+            .btn {
+                display: inline-block;
+                background: #d99a1e;
+                color: #1f2a37;
+                padding: 11px 24px;
+                border: none;
+                border-radius: 6px;
+                font-weight: 700;
+                cursor: pointer;
+                font-size: 1rem;
+            }
+
+            .btn:hover {
+                background: #f0b13a;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            h2.title {
+                text-align: center;
+                font-size: 1.9rem;
+                margin-bottom: 30px;
+                color: #1f2a37;
+            }
+
+            h2.title::after {
+                content: "";
+                display: block;
+                width: 60px;
+                height: 4px;
+                background: #d99a1e;
+                margin: 8px auto 0;
+                border-radius: 3px;
+            }
+
+            .grid {
+                display: grid;
+                gap: 22px;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .card {
+                background: #ffffff;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+                transition: transform 0.2s;
+            }
+
+            .card:hover {
+                transform: translateY(-5px);
+            }
+
+            .card-body {
+                padding: 18px;
+            }
+
+            .card h3 {
+                margin-bottom: 6px;
+                color: #1f2a37;
+            }
+
+            .thumb {
+                height: 170px;
+                display: grid;
+                place-items: center;
+                font-size: 3rem;
+                color: #ffffff;
+            }
+
+            .t1 {
+                background: linear-gradient(135deg, #d99a1e, #b3322b);
+            }
+            .t2 {
+                background: linear-gradient(135deg, #1f7a5a, #2a9d8f);
+            }
+            .t3 {
+                background: linear-gradient(135deg, #3a5a8c, #1f2a37);
+            }
+            .t4 {
+                background: linear-gradient(135deg, #8c4a8c, #b3322b);
+            }
+
+            .price {
+                color: #b3322b;
+                font-weight: 700;
+                font-size: 1.2rem;
+            }
+
+            .tag {
+                display: inline-block;
+                background: #eeeeee;
+                border-radius: 20px;
+                padding: 2px 10px;
+                font-size: 0.8rem;
+                margin: 2px 2px 2px 0;
+            }
+
+            .gallery {
+                display: grid;
+                gap: 12px;
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+
+            .gallery .item {
+                height: 180px;
+                border-radius: 8px;
+                display: grid;
+                place-items: center;
+                color: #ffffff;
+                font-weight: 600;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .video-box {
+                aspect-ratio: 16/9;
+                background: #000000;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            .video-box video {
+                width: 100%;
+                height: 100%;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                background: #ffffff;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            th,
+            td {
+                padding: 12px 14px;
+                text-align: left;
+                border-bottom: 1px solid #eeeeee;
+            }
+
+            th {
+                background: #1f2a37;
+                color: #ffffff;
+            }
+
+            tr:hover td {
+                background: #fdf5e3;
+            }
+
+            form {
+                background: #ffffff;
+                padding: 28px;
+                border-radius: 10px;
+                box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            label {
+                display: block;
+                margin: 12px 0 4px;
+                font-weight: 600;
+            }
+
+            input,
+            select,
+            textarea {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #cccccc;
+                border-radius: 6px;
+                font: inherit;
+            }
+
+            input:focus,
+            select:focus,
+            textarea:focus {
+                outline: 2px solid #d99a1e;
+            }
+
+            .two-col {
+                display: grid;
+                gap: 16px;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .note {
+                background: #fff7e0;
+                border-left: 4px solid #d99a1e;
+                padding: 14px;
+                border-radius: 6px;
+                margin-top: 20px;
+            }
+
+            details {
+                background: #ffffff;
+                border-radius: 8px;
+                padding: 14px 18px;
+                margin-bottom: 12px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            }
+
+            summary {
+                cursor: pointer;
+                font-weight: 700;
+                color: #1f2a37;
+            }
+
+            details p {
+                margin-top: 10px;
+            }
+
+            .review {
+                display: flex;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .avatar {
+                flex: 0 0 60px;
+                height: 60px;
+                border-radius: 50%;
+                background: #1f7a5a;
+                color: #ffffff;
+                display: grid;
+                place-items: center;
+                font-size: 1.4rem;
+                font-weight: 700;
+            }
+
+            .stars {
+                color: #d99a1e;
+            }
+
+            .date {
+                color: #888888;
+                font-size: 0.85rem;
+            }
+
+            .map-box {
+                height: 350px;
+                border-radius: 10px;
+                background: linear-gradient(135deg, #1f7a5a, #1f2a37);
+                color: #ffffff;
+                display: grid;
+                place-items: center;
+                text-align: center;
+                padding: 20px;
+            }
+
+            footer {
+                background: #1f2a37;
+                color: #cccccc;
+                padding: 40px 0 15px;
+                margin-top: 30px;
+            }
+
+            .footer-grid {
+                display: grid;
+                gap: 25px;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+
+            footer h4 {
+                color: #d99a1e;
+                margin-bottom: 8px;
+            }
+
+            footer a:hover {
+                color: #d99a1e;
+            }
+
+            .copy {
+                text-align: center;
+                border-top: 1px solid #3a4756;
+                margin-top: 25px;
+                padding-top: 12px;
+                font-size: 0.85rem;
+            }
+
+            .login-table {
+                min-height: 100vh;
+                display: grid;
+                place-items: center;
+                padding: 30px 16px;
+                background-color: #1f2a37;
+                background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url("Photo/Indexbg.jpg");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+
+            .login-box {
+                width: 100%;
+                max-width: 420px;
+                background: #ffffff;
+                border-radius: 12px;
+                padding: 32px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            }
+
+            .login-box .logo {
+                justify-content: center;
+                margin-bottom: 6px;
+                color: #1f2a37;
+            }
+
+            .login-box form {
+                box-shadow: none;
+                padding: 0;
+            }
+
+            .login-box h2 {
+                text-align: center;
+                color: #1f2a37;
+                margin-bottom: 4px;
+            }
+
+            .login-box .btn {
+                width: 100%;
+                margin-top: 18px;
+            }
+
+            .sub {
+                text-align: center;
+                color: #777777;
+                margin-bottom: 10px;
+            }
+
+            .switch {
+                text-align: center;
+                margin-top: 16px;
+                font-size: 0.92rem;
+            }
+
+            .switch a {
+                color: #1f7a5a;
+                font-weight: 700;
+            }
+
+            .switch a:hover {
+                text-decoration: underline;
+            }
+
+            #register {
+                display: none;
+            }
+
+            #register:target {
+                display: block;
+            }
+
+            #register:target + #login {
+                display: none;
+            }
+
+            @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <div class="login-table">
+            <div class="login-box">
+                <div class="logo"><img src="Photo/logo.jpg" alt="Gateway Travel Logo" /> GATEWAY TRAVEL</div>
+                <p class="sub">Welcome! Please log in or create an account.</p>
+
+                <form id="register" action="index.html" method="get">
+                    <h2>Create Account</h2>
+
+                    <label for="ru">Choose a Username</label>
+                    <input type="text" id="ru" name="username" required minlength="3" />
+
+                    <label for="re">Email</label>
+                    <input type="email" id="re" name="email" required />
+
+                    <label for="rp">Password</label>
+                    <input type="password" id="rp" name="password" required minlength="4" />
+
+                    <button class="btn" type="submit">Sign Up</button>
+                    <div class="switch">Already registered? <a href="#login">Back to login</a></div>
+                </form>
+
+                <form id="login" action="home.html" method="get">
+                    <h2>Login</h2>
+
+                    <label for="lu">Username</label>
+                    <input type="text" id="lu" name="username" required />
+
+                    <label for="lp">Password</label>
+                    <input type="password" id="lp" name="password" required />
+
+                    <button class="btn" type="submit">Login</button>
+                    <div class="switch">No account? <a href="#register">Create one</a></div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
